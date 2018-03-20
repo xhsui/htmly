@@ -616,7 +616,7 @@ function migrate($title, $time, $tags, $content, $url, $user, $source)
     } else {
         $post_content = '<!--t ' . $post_title . ' t-->' . "\n" . '<!--tag' . $post_tagmd . 'tag-->' .  "\n\n" . $content;
     }
-    if (!empty($post_title) && !empty($post_tag) && !empty($post_url) && !empty($post_content)) {
+    if (!empty($post_title) && !empty($post_url) && !empty($post_content)) {
         if (get_magic_quotes_gpc()) {
             $post_content = stripslashes($post_content);
         }

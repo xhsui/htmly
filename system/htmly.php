@@ -1173,7 +1173,6 @@ post('/admin/import', function () {
     $credit = from($_REQUEST, 'credit');
     if (login() && !empty($url) && $proper) {
 
-        get_feed($url, $credit);
         $log = get_feed($url, $credit);
 
         if (!empty($log)) {
