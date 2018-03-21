@@ -757,12 +757,14 @@ post('/add/page', function () {
     $url = from($_REQUEST, 'url');
     $content = from($_REQUEST, 'content');
     $description = from($_REQUEST, 'description');
+    $user = $_SESSION[config("site.url")]['user'];
+
     if ($proper && !empty($title) && !empty($content) && login()) {
         if (!empty($url)) {
-            add_page($title, $url, $content, $description);
+            add_page($user, $title, $url, $content, $description);
         } else {
             $url = $title;
-            add_page($title, $url, $content, $description);
+            add_page($user, $title, $url, $content, $description);
         }
     } else {
         $message['error'] = '';

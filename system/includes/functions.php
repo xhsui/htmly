@@ -207,7 +207,7 @@ function rebuilt_cache($type)
         $string = serialize($posts_cache_sorted);
         file_put_contents('cache/index/index-sorted.txt', print_r($string, true));
     } elseif ($type === 'page') {
-        $page_cache = glob('content/static/*.md', GLOB_NOSORT);
+        $page_cache = glob('content/*/static/*.md', GLOB_NOSORT);
         $string = serialize($page_cache);
         file_put_contents('cache/index/index-page.txt', print_r($string, true));
     } elseif ($type === 'subpage') {
@@ -2038,7 +2038,7 @@ function get_title_from_file($v)
 // Auto generate menu from static page
 function get_menu($custom)
 {
-    $posts = get_static_pages();
+    $posts = config('static.menu') == "true" ? get_static_pages() : array();
     $req = $_SERVER['REQUEST_URI'];
 
     if (!empty($posts)) {

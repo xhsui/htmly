@@ -304,7 +304,7 @@ function edit_content($title, $tag, $url, $content, $oldfile, $destination = nul
 }
 
 // Add static page
-function add_page($title, $url, $content, $description = null)
+function add_page($user, $title, $url, $content, $description = null)
 {
 
     $post_title = safe_html($title);
@@ -322,7 +322,7 @@ function add_page($title, $url, $content, $description = null)
             $post_content = stripslashes($post_content);
         }
         $filename = $post_url . '.md';
-        $dir = 'content/static/';
+        $dir = 'content/'. $user .'/static/';
         if (is_dir($dir)) {
             file_put_contents($dir . $filename, print_r($post_content, true));
         } else {
