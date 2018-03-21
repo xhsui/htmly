@@ -13,9 +13,11 @@ if (config('timezone')) {
     date_default_timezone_set('Asia/Jakarta');
 }
 
+$user = $_SESSION[config("site.url")]['user'];
+
 $whitelist = array('jpg', 'jpeg', 'png', 'gif');
 $name      = null;
-$dir       = 'content/images/';
+$dir       = 'content/'. $user .'/images/';
 $error     = null;
 $timestamp = date('YmdHis');
 $path      = null;
